@@ -1,6 +1,9 @@
 <resources>
-    <string name="app_name">Git Application</string>
+    <string name="app_name">RecyclerView Example</string>
 
     <string name="avatar">avatar</string>
     <string name="star">star</string>
+    <string name="name">Name:</string>
+    <string name="surname">Surname:</string>
+    <string name="message">Message:</string>
 </resources>

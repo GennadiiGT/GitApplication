@@ -1,56 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.myapplication.gitapplication.ui.DetailViewModel" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.DetailFragment">
+        android:background="@color/backgrYellow"
+        android:padding="25dp">
 
-        <ImageView
-            android:id="@+id/avatar"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:layout_marginTop="88dp"
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:cardElevation="4dp"
+            app:cardUseCompatPadding="true"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars"
-            android:contentDescription="@string/avatar" />
+            tools:context=".ui.DetailFragment">
 
-        <TextView
-            android:id="@+id/textViewN"
-            android:layout_width="258dp"
-            android:layout_height="65dp"
-            android:layout_marginTop="64dp"
-            android:textColor="@color/purple_500"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/avatar"
-            tools:text="Name:" />
 
-        <TextView
-            android:id="@+id/textViewS"
-            android:layout_width="258dp"
-            android:layout_height="65dp"
-            android:layout_marginTop="25dp"
-            android:textColor="@color/purple_500"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewN"
-            tools:text="Surname:" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraint"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/backgr">
 
+                <ImageView
+                    android:id="@+id/avatar"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:layout_marginTop="25dp"
+                    android:contentDescription="@string/avatar"
+                    app:imageView="@{viewModel.selectedUser.name}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <TextView
+                    android:id="@+id/textName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/name"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="@+id/textSurName"
+                    app:layout_constraintTop_toTopOf="@+id/textViewN" />
+
+                <TextView
+                    android:id="@+id/textViewN"
+                    android:layout_width="230dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="64dp"
+                    android:text="@{viewModel.selectedUser.name}"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/avatar"
+                    tools:text="Name:" />
+
+                <TextView
+                    android:id="@+id/textSurName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/surname"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toStartOf="@+id/textViewN"
+                    app:layout_constraintTop_toTopOf="@+id/textViewS" />
+
+                <TextView
+                    android:id="@+id/textViewS"
+                    android:layout_width="230dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="@{viewModel.selectedUser.surname}"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewN"
+                    tools:text="Surname" />
+
+                <ImageView
+                    android:id="@+id/imageStar"
+                    imageViewStar="@{viewModel.selectedUser}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="52dp"
+                    android:contentDescription="@string/star"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/avatar"
+                    app:srcCompat="@drawable/ic_baseline_star_outline_24" />
+
+                <TextView
+                    android:id="@+id/textViewMessage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/message"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toStartOf="@+id/textViewN"
+                    app:layout_constraintTop_toBottomOf="@+id/textSurName" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="290dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="4dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.461"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewS"
+                    app:layout_constraintVertical_bias="0.17">
+
+                    <TextView
+                        android:id="@+id/textMessage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:text="@{viewModel.selectedUser.message}"
+                        android:textSize="24sp"
+                        tools:text="Surname" />
+
+                </androidx.cardview.widget.CardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

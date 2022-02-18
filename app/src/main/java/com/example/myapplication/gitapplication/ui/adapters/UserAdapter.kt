@@ -1,4 +1,4 @@
-package com.example.myapplication.gitapplication.ui
+package com.example.myapplication.gitapplication.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -26,16 +26,15 @@ class UserAdapter(private val onClickListener: OnClickListener) :
 
     class UserViewHolder(private val binding: RvItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        var isOn = false
         fun setUser(userAdd: User) = with(binding) {
             user = userAdd
             imageStar.setOnClickListener {
-                if (isOn) {
+                if (userAdd.favorite) {
                     imageStar.setImageResource(R.drawable.ic_baseline_star_outline_24)
                 } else {
                     imageStar.setImageResource(R.drawable.ic_baseline_star_rate_24)
                 }
-                isOn = !isOn
+                userAdd.favorite = userAdd.favorite == false
             }
             executePendingBindings()
         }
@@ -61,6 +60,7 @@ class UserAdapter(private val onClickListener: OnClickListener) :
         holder.itemView.setOnClickListener {
             onClickListener.onClick(userProperty)
         }
+
         holder.setUser(userProperty)
     }
 }

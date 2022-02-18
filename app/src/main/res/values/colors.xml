@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="deletecolor">#FF3B18</color>
     <color name="backgr">#E8F5E9</color>
+    <color name="backgrYellow">#F9FBE7</color>
 </resources>
