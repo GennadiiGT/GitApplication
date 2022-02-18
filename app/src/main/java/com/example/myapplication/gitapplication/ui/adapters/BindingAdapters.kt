@@ -7,8 +7,10 @@ import com.avatarfirst.avatargenlib.AvatarConstants
 import com.example.myapplication.gitapplication.data.User
 import com.squareup.picasso.Picasso
 import com.avatarfirst.avatargenlib.AvatarGenerator
+import com.example.myapplication.gitapplication.R
 import com.example.myapplication.gitapplication.ui.StartViewModel.Companion.PATH
 import com.example.myapplication.gitapplication.ui.StartViewModel.Companion.SIZE
+import com.example.myapplication.gitapplication.ui.adapters.UserAdapter
 
 
 @BindingAdapter("listData")
@@ -32,4 +34,11 @@ fun bindingImageView(imageView: ImageView, name: String) {
         .into(imageView)
 }
 
-
+@BindingAdapter("imageViewStar")
+fun imageStarsetOnClick(imageView: ImageView, user: User) {
+    if (!user.favorite) {
+        imageView.setImageResource(R.drawable.ic_baseline_star_outline_24)
+    } else {
+        imageView.setImageResource(R.drawable.ic_baseline_star_rate_24)
+    }
+}

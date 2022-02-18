@@ -9,4 +9,5 @@ data class User(
     val surname: String?,
     val message: String?,
     val time: String?,
-):Parcelable
+    var favorite: Boolean
+) : Parcelable
